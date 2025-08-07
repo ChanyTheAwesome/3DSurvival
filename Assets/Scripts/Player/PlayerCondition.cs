@@ -1,8 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCondition : MonoBehaviour
+public interface IDamageable
+{
+    void TakePhysicalDamage(int damage);
+}
+public class PlayerCondition : MonoBehaviour, IDamageable
 {
     public UICondition UICondition;
     private Condition health { get { return UICondition.Health; } }
@@ -10,6 +15,8 @@ public class PlayerCondition : MonoBehaviour
     private Condition energy { get { return UICondition.Energy; } }
 
     public float noHungerHealthLossRate;
+
+    public event Action OnTakeDamage;
     void Update()
     {
         energy.Add(energy.passiveValue * Time.deltaTime);
@@ -30,6 +37,11 @@ public class PlayerCondition : MonoBehaviour
     public void Heal(float amount)
     {
         health.Add(amount);
+    }
+    public void TakePhysicalDamage(int damage)
+    {
+        health.Subtract(damage);
+        OnTakeDamage?.Invoke();
     }
 
     public void Eat(float amount)
