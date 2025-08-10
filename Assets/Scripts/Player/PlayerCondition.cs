@@ -52,4 +52,15 @@ public class PlayerCondition : MonoBehaviour, IDamageable
     {
         Debug.Log("Player has died.");
     }
+
+    public bool UseStamina(float amount)
+    {
+        if(energy.curValue - amount < 0)
+        {
+            return false;
+        }
+
+        energy.Subtract(amount);
+        return true;
+    }
 }
