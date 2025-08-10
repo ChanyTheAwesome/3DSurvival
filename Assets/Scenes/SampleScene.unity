@@ -1237,7 +1237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time: 0
-  fullDayLength: 30
+  fullDayLength: 1000
   startTime: 0.4
   noon: {x: 90, y: 0, z: 0}
   sun: {fileID: 705507994}
@@ -3139,18 +3139,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d290143ecf91bb4784f81dcd5bacfa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  health: 6
   walkSpeed: 1
   runSpeed: 4
-  dropOnDeath: []
+  dropOnDeath:
+  - {fileID: 11400000, guid: 4974bfcd760689e48a93aebbfa872705, type: 2}
+  - {fileID: 11400000, guid: b8f4bc43721dd1b43937b8004aad07bb, type: 2}
   detectDistance: 5
   minWanderDistance: 5
-  maxWanderDistance: 0
+  maxWanderDistance: 10
   minWanderWaitTime: 1
   maxWanderWaitTime: 5
-  damage: 0
-  attackRate: 0
-  attackDistance: 0
+  damage: 5
+  attackRate: 1.5
+  attackDistance: 2
   fieldOfView: 120
 --- !u!95 &957979688
 Animator:
